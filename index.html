@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+  <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,400italic'>
+  <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.8/angular-material.min.css">
+  <link href="style.css" rel="stylesheet" />
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-animate.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-aria.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-messages.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.8/angular-material.min.js"></script>
+  <script src="app.js"></script>
+</head>
+<body layout="column" ng-controller="MyController" ng-cloak>
+    <md-toolbar layout="row">
+      <h5>Редактирование информации о сотруднике</h1>
+    </md-toolbar>
+	
+	<div layout="column" class="form">
+		<div class="item">
+			<span class="text">Доступные для выдачи ТМЦ: </span>
+			<span class="blue">Редактировать</span>
+		</div>
+		  
+		<div class="item">
+			<span class="text">Текущее состояние: </span>
+			<span class="black">Работает</span>
+		</div>
+		  
+		<div class="item">
+			<span class="text">Получение ТМЦ на складе: </span>
+			<span class="red">Запрещено</span>
+			<span class="black">(не менялось)</span>
+		</div>
+	
+		<div layout="row" class="form">
+		<form name="userForm" class="forma">
+
+		    <md-input-container class="input right">
+				<label>Фамилия</label>
+				<input ng-model="form.secondName">
+            </md-input-container>
+			
+			<md-input-container class="input right">
+				<label>Имя</label>
+				<input ng-model="form.name">
+            </md-input-container>
+
+		  	<md-input-container class="input">
+				<label>Отчество</label>
+				<input ng-model="form.otch">
+            </md-input-container>
+			
+			<md-input-container class="select right">
+				<label>Пол</label>
+				<md-select ng-model="form.gender">
+					<md-option><em>Не выбран</em></md-option>
+					<md-option ng-repeat="state in gender" ng-value="state">
+						{{state}}
+					</md-option>
+				</md-select>
+			</md-input-container>
+	  
+		  	<md-input-container class="select">
+				<label>Наставник</label>
+				<md-select ng-model="form.nast">
+					<md-option><em>Не выбран</em></md-option>
+					<md-option ng-repeat="state in nast" ng-value="state">
+						{{state}}
+					</md-option>
+				</md-select>
+			</md-input-container>
+		    
+			<md-checkbox class="block" ng-model="form.rukovod" aria-label="Руководитель">Руководитель</md-checkbox>
+			<md-checkbox class="block" ng-model="form.otv" aria-label="Руководитель">Ответственное лицо</md-checkbox>
+			<md-checkbox class="block" ng-model="form.extr" aria-label="Руководитель">Экстренная служба</md-checkbox>
+			<md-checkbox class="block" ng-model="form.depozit" aria-label="Руководитель">Депозит</md-checkbox>
+			<md-checkbox class="block" ng-model="form.stager" aria-label="Руководитель">Стажер</md-checkbox>
+			<md-checkbox class="block" ng-model="form.recrut" aria-label="Руководитель">Рекрутер</md-checkbox>
+			<md-checkbox class="block" ng-model="form.obr" aria-label="Руководитель">Обращения в согласовании</md-checkbox>
+			<md-checkbox class="block" ng-model="form.kkm" aria-label="Руководитель">Проверка ККМ</md-checkbox>
+			<md-checkbox class="block" ng-model="form.gps" aria-label="Руководитель">Мониторинг GPS</md-checkbox>
+		  
+		  	<md-input-container class="input right">
+				<label>Квалиф</label>
+				<input ng-model="form.kval">
+            </md-input-container>
+			<span>/</span>
+			<md-input-container class="input right">
+				<label>Гр. по ТБ</label>
+				<input ng-model="form.gr">
+            </md-input-container>
+			
+			<div>
+				<md-input-container class="input right">
+					<label>Внутренний номер</label>
+					<input ng-model="form.num">
+				</md-input-container>
+				
+				<md-input-container class="input">
+					<label>Сотовый номер</label>
+					<input ng-model="form.sot">
+				</md-input-container>
+			</div>
+			
+			<md-checkbox class="block" ng-model="form.kod" aria-label="Отправлять код руководителю">Отправлять код руководителю</md-checkbox>
+
+			<md-input-container class="input right">
+				<label>Домашний телефон</label>
+				<input ng-model="form.dom">
+			</md-input-container>
+			
+			<md-input-container class="select">
+				<label>Показывать телефон</label>
+				<md-select ng-model="form.show">
+					<md-option><em>Не выбран</em></md-option>
+					<md-option ng-repeat="state in show" ng-value="state">
+						{{state}}
+					</md-option>
+				</md-select>
+			</md-input-container>
+			
+			<md-input-container class="md-block textarea">
+				<label>Адрес</label>
+				<textarea ng-model="form.adres" md-maxlength="150" rows="1" md-select-on-focus></textarea>
+			</md-input-container>
+
+		    <md-input-container class="right">
+				<label>Дата приема</label>
+				<md-datepicker ng-model="form.submissionDate"></md-datepicker>
+			</md-input-container>
+			
+			<md-input-container class="date">
+				<label>День рождения</label>
+				<md-datepicker ng-model="form.bd"></md-datepicker>
+			</md-input-container>
+			
+			<md-checkbox class="block" ng-model="form.dost" aria-label="Доступ в помещения">Доступ в помещения</md-checkbox>
+			<md-checkbox class="block" ng-model="form.shtat" aria-label="Оформлен в штат">Оформлен в штат</md-checkbox>
+		  
+		  	<md-button class="md-raised md-warn button">Отправить</md-button>
+			<div style="margin: 20px;">{{form | json}}</div>
+		  </md-content>
+		  </form>
+		</div>
+	</div>
+</body>
+</html>
